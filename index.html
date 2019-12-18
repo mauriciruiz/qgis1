@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/BCN200_0101S_LIM_ADM_0.js"></script>
+        <script src="data/BCN200_0202L_CURV_NIV_1.js"></script>
+        <script src="data/BCN200_0301L_RIO_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[38.6165931464,0.994362770862],[40.1025487041,4.43552300965]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_BCN200_0101S_LIM_ADM_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_BD'] !== null ? Autolinker.link(String(feature.properties['ID_BD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_SIMPLE'] !== null ? Autolinker.link(String(feature.properties['ID_SIMPLE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_CODIGO'] !== null ? Autolinker.link(String(feature.properties['ID_CODIGO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_HOJA'] !== null ? Autolinker.link(String(feature.properties['ID_HOJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_MOD'] !== null ? Autolinker.link(String(feature.properties['ID_MOD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TTGGSS'] !== null ? Autolinker.link(String(feature.properties['TTGGSS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_ALTA'] !== null ? Autolinker.link(String(feature.properties['FECHA_ALTA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_BAJA'] !== null ? Autolinker.link(String(feature.properties['FECHA_BAJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO_0101'] !== null ? Autolinker.link(String(feature.properties['TIPO_0101'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIGO_INE'] !== null ? Autolinker.link(String(feature.properties['CODIGO_INE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID1'] !== null ? Autolinker.link(String(feature.properties['ID1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIMARYIND'] !== null ? Autolinker.link(String(feature.properties['PRIMARYIND'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BCN200_0101S_LIM_ADM_0_0() {
+            return {
+                pane: 'pane_BCN200_0101S_LIM_ADM_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(147,170,213,1.0)',
+            }
+        }
+        map.createPane('pane_BCN200_0101S_LIM_ADM_0');
+        map.getPane('pane_BCN200_0101S_LIM_ADM_0').style.zIndex = 400;
+        map.getPane('pane_BCN200_0101S_LIM_ADM_0').style['mix-blend-mode'] = 'normal';
+        var layer_BCN200_0101S_LIM_ADM_0 = new L.geoJson(json_BCN200_0101S_LIM_ADM_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BCN200_0101S_LIM_ADM_0',
+            onEachFeature: pop_BCN200_0101S_LIM_ADM_0,
+            style: style_BCN200_0101S_LIM_ADM_0_0,
+        });
+        bounds_group.addLayer(layer_BCN200_0101S_LIM_ADM_0);
+        map.addLayer(layer_BCN200_0101S_LIM_ADM_0);
+        function pop_BCN200_0202L_CURV_NIV_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_BD'] !== null ? Autolinker.link(String(feature.properties['ID_BD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_CODIGO'] !== null ? Autolinker.link(String(feature.properties['ID_CODIGO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_HOJA'] !== null ? Autolinker.link(String(feature.properties['ID_HOJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_MOD'] !== null ? Autolinker.link(String(feature.properties['ID_MOD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_ALTA'] !== null ? Autolinker.link(String(feature.properties['FECHA_ALTA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_BAJA'] !== null ? Autolinker.link(String(feature.properties['FECHA_BAJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO_0202'] !== null ? Autolinker.link(String(feature.properties['TIPO_0202'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATEG_0202'] !== null ? Autolinker.link(String(feature.properties['CATEG_0202'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COTA'] !== null ? Autolinker.link(String(feature.properties['COTA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIMARYIND'] !== null ? Autolinker.link(String(feature.properties['PRIMARYIND'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BCN200_0202L_CURV_NIV_1_0(feature) {
+            switch(String(feature.properties['COTA'])) {
+                case '100':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(254,240,217,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '200':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(254,229,193,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '300':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(254,218,169,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '400':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(254,207,144,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '500':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(253,190,127,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '600':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(253,170,112,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '700':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(253,151,96,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '800':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(249,131,83,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '900':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(241,110,71,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '1000':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(233,89,60,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '1100':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(224,68,47,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '1200':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(209,45,31,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                case '1300':
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(194,22,15,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_BCN200_0202L_CURV_NIV_1',
+                opacity: 1,
+                color: 'rgba(179,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_BCN200_0202L_CURV_NIV_1');
+        map.getPane('pane_BCN200_0202L_CURV_NIV_1').style.zIndex = 401;
+        map.getPane('pane_BCN200_0202L_CURV_NIV_1').style['mix-blend-mode'] = 'normal';
+        var layer_BCN200_0202L_CURV_NIV_1 = new L.geoJson(json_BCN200_0202L_CURV_NIV_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BCN200_0202L_CURV_NIV_1',
+            onEachFeature: pop_BCN200_0202L_CURV_NIV_1,
+            style: style_BCN200_0202L_CURV_NIV_1_0,
+        });
+        bounds_group.addLayer(layer_BCN200_0202L_CURV_NIV_1);
+        map.addLayer(layer_BCN200_0202L_CURV_NIV_1);
+        function pop_BCN200_0301L_RIO_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? Autolinker.link(String(feature.properties['ID'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_BD'] !== null ? Autolinker.link(String(feature.properties['ID_BD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_SIMPLE'] !== null ? Autolinker.link(String(feature.properties['ID_SIMPLE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_CODIGO'] !== null ? Autolinker.link(String(feature.properties['ID_CODIGO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_HOJA'] !== null ? Autolinker.link(String(feature.properties['ID_HOJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID_MOD'] !== null ? Autolinker.link(String(feature.properties['ID_MOD'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TTGGSS'] !== null ? Autolinker.link(String(feature.properties['TTGGSS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_ALTA'] !== null ? Autolinker.link(String(feature.properties['FECHA_ALTA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FECHA_BAJA'] !== null ? Autolinker.link(String(feature.properties['FECHA_BAJA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMPO_0301'] !== null ? Autolinker.link(String(feature.properties['COMPO_0301'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CATEG_0301'] !== null ? Autolinker.link(String(feature.properties['CATEG_0301'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['REGIM_0301'] !== null ? Autolinker.link(String(feature.properties['REGIM_0301'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CURSO'] !== null ? Autolinker.link(String(feature.properties['CURSO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ENDORREICO'] !== null ? Autolinker.link(String(feature.properties['ENDORREICO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ETIQUETA'] !== null ? Autolinker.link(String(feature.properties['ETIQUETA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PRIMARYIND'] !== null ? Autolinker.link(String(feature.properties['PRIMARYIND'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_BCN200_0301L_RIO_2_0() {
+            return {
+                pane: 'pane_BCN200_0301L_RIO_2',
+                opacity: 1,
+                color: 'rgba(162,228,230,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_BCN200_0301L_RIO_2');
+        map.getPane('pane_BCN200_0301L_RIO_2').style.zIndex = 402;
+        map.getPane('pane_BCN200_0301L_RIO_2').style['mix-blend-mode'] = 'normal';
+        var layer_BCN200_0301L_RIO_2 = new L.geoJson(json_BCN200_0301L_RIO_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_BCN200_0301L_RIO_2',
+            onEachFeature: pop_BCN200_0301L_RIO_2,
+            style: style_BCN200_0301L_RIO_2_0,
+        });
+        bounds_group.addLayer(layer_BCN200_0301L_RIO_2);
+        map.addLayer(layer_BCN200_0301L_RIO_2);
+        setBounds();
+        </script>
+    </body>
+</html>
